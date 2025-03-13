@@ -1,0 +1,83 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to right, #141e30, #243b55);
+    color: white;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+/* Main Container - Move Form to the Top */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Moves content to the top */
+    height: 100vh; /* Full screen height */
+}
+
+/* Registration Form - Now at the Top */
+.registration-form {
+    background: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    margin-top: 20px; /* Reduces space from top */
+    border-radius: 10px;
+    max-width: 400px;
+    box-shadow: 0px 0px 15px cyan;
+}
+
+/* Input Fields */
+.input-group {
+    text-align: left;
+    margin: 15px 0;
+}
+
+label {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    background: #222;
+    color: white;
+}
+
+/* Button */
+button {
+    background: cyan;
+    color: black;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    font-weight: bold;
+}
+
+button:hover {
+    background: #00e6e6;
+}
+
+/* Success Message */
+#successMessage {
+    background: rgba(0, 255, 0, 0.2);
+    padding: 15px;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+/* Crypto Prices & Countdown */
+.crypto-details, .airdrop-timer {
+    margin-top: 20px;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 10px;
+    max-width: 400px;
+}
